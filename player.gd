@@ -7,7 +7,7 @@ const JUMP_VELOCITY = 6
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera
 @onready var win_message_label = $"/root/Main/CanvasLayer/Label"
-
+#test
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
