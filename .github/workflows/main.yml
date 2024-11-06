@@ -1,53 +1,32 @@
-name: Godot Export and Release
+name: Godot Export
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'  # Triggers the workflow on version tag pushes, e.g., v1.0.0
+  push: 
+  # Triggers the workflow on any push to the main branch
+    branches:
+      - main 
+  pull_request: 
+  # Triggers the workflow on any pull request targeting the main branch
+    branches:
+      - main 
 
 jobs:
-  export-and-release:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest # Specifies the environment (Ubuntu) where the job will run
 
     steps:
-      # Checkout the code
+     # Step 1: Check out the repository code
       - name: Check out code
-        uses: actions/checkout@v3
-
-      # Set up Godot Exporter for Windows
-      - name: Set up Godot Exporter for Windows
+        uses: actions/checkout@v3 # Action to clone the repository into the runner
+      
+     # Step 2: Godot Export
+      - name: Godot Export
         uses: firebelley/godot-export@v6.0.0
-        with:
-          godot-version: '4.3'
-          export-preset: 'Windows Desktop'  # Name from export_presets.cfg
-          output-path: 'builds/Windows'
-
-      # Export the Windows build
-      - name: Export Windows Build
-        id: export-windows
-        run: |
-          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
-
-      # Set up Godot Exporter for Linux
-      - name: Set up Godot Exporter for Linux
-        uses: firebelley/godot-export@v6.0.0
-        with:
-          godot-version: '4.3'
-          export-preset: 'Linux/X11'  # Name from export_presets.cfg
-          output-path: 'builds/Linux'
-
-      # Export the Linux build
-      - name: Export Linux Build
-        id: export-linux
-        run: |
-          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
-
-      # Create a GitHub Release and upload both Windows and Linux builds
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            builds/Windows/*
-            builds/Linux/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+             #The download url of the Linux Headless Godot executable
+             godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+             #The url of the export templates corresponding to the Godot executable version.
+             godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+             #The path relative to the root of the git repository that contains the "project.godot" file.
+             relative_project_path: ./
+        
