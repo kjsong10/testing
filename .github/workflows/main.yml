@@ -36,16 +36,19 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  release:
-      name: Release pushed tag
-      runs-on: ubuntu-22.04
-      steps:         
-        - name: Create release
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            tag: ${{ github.ref_name }}
-          run: |
-            gh release create "$GITHUB_REF_NAME" \
-                --repo="$GITHUB_REPOSITORY" \
-                --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-                --generate-notes
+      - name: Export Linux Build
+        run: |
+          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
+
+      # Create or Update GitHub Release
+      - name: Create or Update Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest  # Use a fixed tag name like 'latest' to update the release each push
+          release_name: "Automatic Release - ${{ github.sha }}"  # Optionally include commit SHA
+          files: |
+            builds/Windows/*
+            builds/Linux/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
