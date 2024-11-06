@@ -36,19 +36,12 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Export Linux Build
-        run: |
-          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
-
-      # Create or Update GitHub Release
-      - name: Create or Update Release
+      - name: Create GitHub Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: latest  # Use a fixed tag name like 'latest' to update the release each push
-          release_name: "Automatic Release - ${{ github.sha }}"  # Optionally include commit SHA
-          files: |
-            builds/Windows/*
-            builds/Linux/*
+          tag_name: ${{ github.sha }}  # Use commit SHA as unique tag name
+          release_name: "Release for Commit ${{ github.sha }}"
+          body: "Automated release for commit ${{ github.sha }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
