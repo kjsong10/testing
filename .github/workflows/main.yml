@@ -1,0 +1,53 @@
+name: Godot Export and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers the workflow on version tag pushes, e.g., v1.0.0
+
+jobs:
+  export-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Set up Godot Exporter for Windows
+      - name: Set up Godot Exporter for Windows
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot-version: '4.3'
+          export-preset: 'Windows Desktop'  # Name from export_presets.cfg
+          output-path: 'builds/Windows'
+
+      # Export the Windows build
+      - name: Export Windows Build
+        id: export-windows
+        run: |
+          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
+
+      # Set up Godot Exporter for Linux
+      - name: Set up Godot Exporter for Linux
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot-version: '4.3'
+          export-preset: 'Linux/X11'  # Name from export_presets.cfg
+          output-path: 'builds/Linux'
+
+      # Export the Linux build
+      - name: Export Linux Build
+        id: export-linux
+        run: |
+          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
+
+      # Create a GitHub Release and upload both Windows and Linux builds
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            builds/Windows/*
+            builds/Linux/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
