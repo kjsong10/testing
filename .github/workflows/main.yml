@@ -22,29 +22,9 @@ jobs:
       - name: Set up Godot Exporter for Windows
         uses: firebelley/godot-export@v6.0.0
         with:
-          godot-version: '4.3'
-          export-preset: 'Windows Desktop'  # Name from export_presets.cfg
-          output-path: 'builds/Windows'
-
-      # Export the Windows build
-      - name: Export Windows Build
-        id: export-windows
-        run: |
-          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
-
-      # Set up Godot Exporter for Linux
-      - name: Set up Godot Exporter for Linux
-        uses: firebelley/godot-export@v6.0.0
-        with:
-          godot-version: '4.3'
-          export-preset: 'Linux/X11'  # Name from export_presets.cfg
-          output-path: 'builds/Linux'
-
-      # Export the Linux build
-      - name: Export Linux Build
-        id: export-linux
-        run: |
-          godot-exporter export ${{ github.workspace }}/export_presets.cfg ${{ github.ref_name }}
+             godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+             godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+             relative_project_path: ./
 
       # Create a GitHub Release and upload both Windows and Linux builds
       - name: Create GitHub Release
