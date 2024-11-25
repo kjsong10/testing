@@ -1,4 +1,4 @@
-name: Godot Export
+name: TestRunner
 
 on:
   push: 
