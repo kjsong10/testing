@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dn4t1qdn3qi12"
-path.s3tc="res://.godot/imported/scene_draft_2_with_lighting_Station_Sign_Texture.png-6e57d551438c7e532bc1070ea1d9d296.s3tc.ctex"
+path.s3tc="res://.godot/imported/scene_draft_2_with_lighting_Station_Sign_Texture.png-f13b7fd7ac2f1a2b4b54a62f7ec125a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://137_downtown/scene_draft_2_with_lighting_Station_Sign_Texture.png"
-dest_files=["res://.godot/imported/scene_draft_2_with_lighting_Station_Sign_Texture.png-6e57d551438c7e532bc1070ea1d9d296.s3tc.ctex"]
+source_file="res://textures/scene_draft_2_with_lighting_Station_Sign_Texture.png"
+dest_files=["res://.godot/imported/scene_draft_2_with_lighting_Station_Sign_Texture.png-f13b7fd7ac2f1a2b4b54a62f7ec125a7.s3tc.ctex"]
 
 [params]
 
