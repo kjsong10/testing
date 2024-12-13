@@ -243,11 +243,6 @@ horizontal_alignment = 1
 [node name="137" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -5, -35)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="137"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29, 2.01639, 26.107)
-mesh = SubResource("BoxMesh_47x5b")
-skeleton = NodePath("../../plat5")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="137"]
 shape = SubResource("BoxShape3D_5bqiy")
 
@@ -264,6 +259,11 @@ shape = SubResource("BoxShape3D_bkua1")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, -35)
+pixel_size = 0.02
+text = "Jump here for 137"
+
+[node name="Label3D" type="Label3D" parent="Label3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.38172, -1, 30.2898)
 pixel_size = 0.02
 text = "Jump here for 137"
 
