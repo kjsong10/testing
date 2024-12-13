@@ -243,6 +243,11 @@ horizontal_alignment = 1
 [node name="137" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -5, -35)
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="137"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29, 2.01639, 26.107)
+mesh = SubResource("BoxMesh_47x5b")
+skeleton = NodePath("../../plat5")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="137"]
 shape = SubResource("BoxShape3D_5bqiy")
 
