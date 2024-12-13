@@ -263,7 +263,7 @@ pixel_size = 0.02
 text = "Jump here for 137"
 
 [node name="Label3D" type="Label3D" parent="Label3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.38172, -1, 30.2898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.38172, -0.395341, 30.2898)
 pixel_size = 0.02
 text = "Jump here for 137"
 
