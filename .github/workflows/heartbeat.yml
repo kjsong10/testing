@@ -28,7 +28,7 @@ jobs:
       - name: Run Lighthouse
         run: |
           lhci autorun \
-            --collect.url=https://<YOUR-GITHUB-PAGES-URL> \
+            --collect.url=https://kjsong10.github.io/testing/
             --upload.target=filesystem \
             --upload.outputDir=./lighthouse-report
 
