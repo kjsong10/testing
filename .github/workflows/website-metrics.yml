@@ -2,7 +2,7 @@ name: Website Metrics
 
 on:
   schedule:
-    - cron: '/5 * * * *' # Runs every hour
+    - cron: '*/5 * * * *' # Runs every hour
   workflow_dispatch: # Allows manual triggers
 
 jobs:
