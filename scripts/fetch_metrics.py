@@ -15,5 +15,5 @@ def fetch_metrics(url):
 
 if __name__ == "__main__":
     # Specify the website URL
-    website_url = "kjsong10.github.io/testing/"
+    website_url = "kjsong10.github.io/testing/?"
     fetch_metrics(website_url)
