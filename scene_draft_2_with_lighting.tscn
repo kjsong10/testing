@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bas81xe6c0mu7"]
+
+[ext_resource type="PackedScene" uid="uid://1veen5ulfa1o" path="res://137_downtown/scene_draft_2_with_lighting.glb" id="1_d4bxx"]
+
+[node name="scene_draft_2_with_lighting" instance=ExtResource("1_d4bxx")]
